@@ -7,9 +7,13 @@ Installation:
 
 Usage:
 
+  namaste -h
   cd /my/object/directory/
   namaste type dflat_0.4
-  namaste what "Crime and Punishment"
+  namaste who "Mark Twain"
+  namaste what "The Adventures of Tom Sawyer"
+  namaste when 1876
+  namaste where England
   namaste get
 
 1. http://www.cdlib.org/inside/diglib/namaste/namastespec.html
