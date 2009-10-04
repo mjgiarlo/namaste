@@ -1,0 +1,6 @@
+#!/usr/bin/env python
+
+import namaste
+
+if __name__ == '__main__':
+    namaste.main()

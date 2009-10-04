@@ -1,0 +1,16 @@
+A python client implementation of the Namaste[1] specification for directory
+description with filename-based tags.
+
+Installation:
+
+  easy_install namaste
+
+Usage:
+
+  cd /my/object/directory/
+  namaste type dflat_0.4
+  namaste what "Crime and Punishment"
+  namaste get
+
+1. http://www.cdlib.org/inside/diglib/namaste/namastespec.html
+

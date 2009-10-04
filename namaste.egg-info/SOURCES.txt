@@ -1,0 +1,9 @@
+README
+ez_setup.py
+namaste.py
+setup.py
+bin/namaste
+namaste.egg-info/PKG-INFO
+namaste.egg-info/SOURCES.txt
+namaste.egg-info/dependency_links.txt
+namaste.egg-info/top_level.txt
