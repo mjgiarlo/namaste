@@ -6,7 +6,7 @@ from setuptools import setup, find_packages
 
 setup(
     name = 'namaste',
-    version = '0.2',
+    version = '0.3',
     description = "a tool for working with Namaste directory description tags",
     author = "Michael J. Giarlo",
     author_email = "leftwing@alumni.rutgers.edu",
