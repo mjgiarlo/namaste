@@ -36,29 +36,34 @@ def main():
     else: 
         print "unknown command: %s" % cmd
 
-def dirtype(d, value):
+def dirtype(d, value, verbose=True):
     namaste =  _set_namaste(d, 0, value)
-    print "created namaste %s" % namaste
+    if verbose:
+        print "created namaste %s" % namaste
     return namaste
 
-def who(d, value):
+def who(d, value, verbose=True):
     namaste = _set_namaste(d, 1, value)
-    print "created namaste %s" % namaste
+    if verbose: 
+        print "created namaste %s" % namaste
     return namaste
 
-def what(d, value):
+def what(d, value, verbose=True):
     namaste = _set_namaste(d, 2, value)
-    print "created namaste %s" % namaste
+    if verbose:
+        print "created namaste %s" % namaste
     return namaste
 
-def when(d, value):
+def when(d, value, verbose=True):
     namaste = _set_namaste(d, 3, value)
-    print "created namaste %s" % namaste
+    if verbose:
+        print "created namaste %s" % namaste
     return namaste
 
-def where(d, value):
+def where(d, value, verbose=True):
     namaste = _set_namaste(d, 4, value)
-    print "created namaste %s" % namaste
+    if verbose:
+        print "created namaste %s" % namaste
     return namaste
 
 def get(d):
