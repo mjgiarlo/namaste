@@ -2,6 +2,8 @@ from __future__ import with_statement
 import os
 import glob
 
+import re
+
 def main():
     import optparse    
     parser = optparse.OptionParser("Usage: %prog [options] <cmd> [<value>]")
@@ -33,6 +35,8 @@ def main():
         where(d, value)
     elif cmd == 'get':
         get(d)
+    elif cmd == 'gettypes':
+        get_types(d)
     else: 
         print "unknown command: %s" % cmd
 
@@ -73,6 +77,23 @@ def get(d, verbose=True):
     if tags and verbose:
         print "namastes: %s" % ", ".join(tags)
     return tags
+    
+def get_types(d, verbose=True):
+    type_tags = _get_namaste(d, 0)
+    types = {}
+    if type_tags:
+        p = re.compile(r"""0=
+                       (?P<name>[^_]+)_
+                       (?P<major>\d+)\.
+                       (?P<minor>\d+)""", re.VERBOSE)
+        for t in type_tags:
+            m = p.match(t)
+            if m != None:
+                g = m.groupdict()
+                if verbose:
+                    print "namaste - directory type %(name)s - version %(major)s.%(minor)s" % (g)
+                types[g['name']] = g
+    return types
 
 def _set_namaste(d, tag, value):
     if not value:
@@ -84,6 +105,14 @@ def _set_namaste(d, tag, value):
         f.write(value)
         f.write("\n")
     return namaste
+    
+def _get_namaste(d, tag):
+    if not os.path.isdir(d):
+        raise Exception("directory %s does not exist" % d)
+    namaste = filter(lambda x: x.startswith('%s=' % tag), os.listdir(d))
+    if namaste:
+        return namaste
+    return None
 
 def _make_namaste(tag, value):
     return "%s=%s" % (tag, value)
