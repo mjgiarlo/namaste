@@ -66,11 +66,11 @@ def where(d, value, verbose=True):
         print "created namaste %s" % namaste
     return namaste
 
-def get(d):
+def get(d, verbose=True):
     tags = []
     for namaste in glob.iglob(os.path.join(d, "[0-4]=*")):
         tags.append(namaste)
-    if tags:
+    if tags and verbose:
         print "namastes: %s" % ", ".join(tags)
     return tags
 
