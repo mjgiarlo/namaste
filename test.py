@@ -68,3 +68,14 @@ class NamasteTests(unittest.TestCase):
                 os.path.join(TESTDIR, namaste._make_namaste(4, 'Seattle')),
                 ])
 
+    def test_gettypes(self):
+        namaste.dirtype(TESTDIR, 'bagit_2323.1')
+        namaste.dirtype(TESTDIR, 'redd_0.1333')
+        namaste.dirtype(TESTDIR, 'dflat_34.22')
+        types = namaste.get_types(TESTDIR)
+        self.assertTrue('bagit' in types)
+        self.assertTrue('redd' in types)
+        self.assertTrue('dflat' in types)
+        self.assertEqual(types['bagit'], {'name':'bagit', 'major':'2323', 'minor':'1'})
+        self.assertEqual(types['redd'], {'name':'redd', 'major':'0', 'minor':'1333'})
+        self.assertEqual(types['dflat'], {'name':'dflat', 'major':'34', 'minor':'22'})
