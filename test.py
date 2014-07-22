@@ -21,36 +21,41 @@ class NamasteTests(unittest.TestCase):
         self.assertFalse(os.path.isfile(os.path.join(TESTDIR, '0=bagit_0.1')))
         namaste.dirtype(TESTDIR, 'bagit_0.1') 
         self.assertTrue(os.path.isfile(os.path.join(TESTDIR, '0=bagit_0.1')))
-        self.assertEqual(open(os.path.join(TESTDIR, '0=bagit_0.1')).read(),
-                         "bagit_0.1\n")
+        f = open(os.path.join(TESTDIR, '0=bagit_0.1'))
+        self.assertEqual(f.read(), "bagit_0.1\n")
+        f.close()
 
     def test_who(self):
         self.assertFalse(os.path.isfile(os.path.join(TESTDIR, '1=Twain,M.')))
         namaste.who(TESTDIR, "Twain,M.")
         self.assertTrue(os.path.isfile(os.path.join(TESTDIR, '1=Twain,M.')))
-        self.assertEqual(open(os.path.join(TESTDIR, '1=Twain,M.')).read(),
-                         "Twain,M.\n")
+        f = open(os.path.join(TESTDIR, '1=Twain,M.'))
+        self.assertEqual(f.read(), "Twain,M.\n")
+        f.close()
 
     def test_what(self):
         self.assertFalse(os.path.isfile(os.path.join(TESTDIR, '2=Hamlet')))
         namaste.what(TESTDIR, "Hamlet")
         self.assertTrue(os.path.isfile(os.path.join(TESTDIR, '2=Hamlet')))
-        self.assertEqual(open(os.path.join(TESTDIR, '2=Hamlet')).read(),
-                         "Hamlet\n")
+        f = open(os.path.join(TESTDIR, '2=Hamlet'))
+        self.assertEqual(f.read(),"Hamlet\n")
+        f.close()
 
     def test_when(self):
         self.assertFalse(os.path.isfile(os.path.join(TESTDIR, '3=2005')))
         namaste.when(TESTDIR, "2005")
         self.assertTrue(os.path.isfile(os.path.join(TESTDIR, '3=2005')))
-        self.assertEqual(open(os.path.join(TESTDIR, '3=2005')).read(),
-                         "2005\n")
+        f = open(os.path.join(TESTDIR, '3=2005'))
+        self.assertEqual(f.read(), "2005\n")
+        f.close()
 
     def test_where(self):
         self.assertFalse(os.path.isfile(os.path.join(TESTDIR, '4=Seattle')))
         namaste.where(TESTDIR, "Seattle")
         self.assertTrue(os.path.isfile(os.path.join(TESTDIR, '4=Seattle')))
-        self.assertEqual(open(os.path.join(TESTDIR, '4=Seattle')).read(),
-                         "Seattle\n")
+        f = open(os.path.join(TESTDIR, '4=Seattle'))
+        self.assertEqual(f.read(), "Seattle\n")
+        f.close()
 
     def test_get(self):
         namaste.dirtype(TESTDIR, 'bagit_0.1') 
@@ -79,3 +84,6 @@ class NamasteTests(unittest.TestCase):
         self.assertEqual(types['bagit'], {'name':'bagit', 'major':'2323', 'minor':'1'})
         self.assertEqual(types['redd'], {'name':'redd', 'major':'0', 'minor':'1333'})
         self.assertEqual(types['dflat'], {'name':'dflat', 'major':'34', 'minor':'22'})
+
+if __name__ == "__main__":
+    unittest.main()
