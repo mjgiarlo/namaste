@@ -5,3 +5,5 @@
 *.pyc
 namaste-test
 dist
+build
+*.egg-info
